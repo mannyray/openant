@@ -197,7 +197,7 @@ class Node:
     def _main(self):
         while self._running:
             try:
-                (data_type, channel, data) = self._datas.get(True, 1.0)
+                (data_type, channel, data) = self._datas.get()
                 self._datas.task_done()
 
                 if data_type == "broadcast":

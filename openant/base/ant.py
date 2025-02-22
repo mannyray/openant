@@ -240,7 +240,7 @@ class Ant:
     def _main(self):
         while self._running:
             try:
-                (event_type, event) = self._events.get(True, 1.0)
+                (event_type, event) = self._events.get()
                 self._events.task_done()
                 (channel, event, data) = event
 
