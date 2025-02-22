@@ -135,7 +135,7 @@ class Ant:
                 # a new channel timeslot.
                 if not (
                     message._id == Message.ID.BROADCAST_DATA
-                    and message._data == self._last_data
+                    and message._data == "won't ever equal _this_"
                 ):
                     # Notifications
                     if message._id in [
@@ -197,6 +197,7 @@ class Ant:
                             )
                         )
                     elif message._id == Message.ID.BROADCAST_DATA:
+                        print("about to broadcast")
                         self._on_broadcast(message)
                     elif message._id == Message.ID.ACKNOWLEDGED_DATA:
                         self._on_acknowledge(message)
