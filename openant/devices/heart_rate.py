@@ -53,7 +53,8 @@ class HeartRate(AntPlusDevice):
         _logger.debug(f"{self} on_data: {data}")
 
         # MSB is page change toggle, 0-7 can be rotated with page specific data but all include these bytes
-        if (page & 0x0F) <= 7:
+        print("The page is "+str((page & 0x0F)))
+        if (page & 0x0F) <= 9:
             self._event_count[0] = self._event_count[1]
             self._event_count[1] = data[6]
             dp = page & 0x0F
@@ -99,5 +100,4 @@ class HeartRate(AntPlusDevice):
                 )
                 # trigger the on battery callback
                 self._on_battery(self.data["common"].last_battery_data)
-
             self.on_device_data(page, "heart_rate", self.data["heart_rate"])
